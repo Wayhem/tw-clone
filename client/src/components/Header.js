@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GoogleAuth from './GoogleAuth';
 
 const Header = () => {
     return (
-    <div className="ui pointing menu">
+    <div className="ui secondary pointing menu">
         <Link to="/" className="item">
             Twitch Clone
         </Link>
@@ -11,9 +12,7 @@ const Header = () => {
             <Link to="/" className="item">
                 Home
             </Link>
-            <Link to="/" className="item">
-                Login
-            </Link>
+            <GoogleAuth />
         </div>
     </div>
     );
