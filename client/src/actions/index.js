@@ -30,9 +30,14 @@ export const fetchStreams = () => async dispatch => {
 }
 
 export const fetchStream = id => async dispatch => {
-    const response = await streams.get(`/streams/${id}`);
+    try {
+        const response = await streams.get(`/streams/${id}`);
 
-    dispatch({ type: FETCH_STREAM, payload: response.data });
+        dispatch({ type: FETCH_STREAM, payload: response.data });
+    } catch (e) {
+        alert('error fetching data');
+        history.push('/');
+    }
 }
 
 export const createStream = formValues => async (dispatch, getState) => {
@@ -54,4 +59,5 @@ export const deleteStream = id => async dispatch => {
     await streams.delete(`/streams/${id}`);
 
     dispatch({ type: DELETE_STREAM, payload: id })
+    history.push('/');
 }
